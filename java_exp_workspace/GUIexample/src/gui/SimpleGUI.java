@@ -9,7 +9,7 @@ public class SimpleGUI
 	public static void main(String[] args)
 	{
 		//jframe panel
-		JFrame f = new JFrame("Button Example");
+		JFrame f = new JFrame("Swing Examples");
 		
 		JLabel l = new JLabel("Experiment 1 - Toggle Text");
 		l.setBounds(50,0,200,20);
