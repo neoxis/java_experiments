@@ -6,9 +6,9 @@ import java.awt.event.*;
 public class ComboBoxExample implements ActionListener
 {
 	//variables
-	JLabel l;
+	final JLabel l;
 	JButton b;
-	JComboBox<String> cb;
+	final JComboBox<String> cb;
 
 	ComboBoxExample()
 	{
@@ -23,6 +23,7 @@ public class ComboBoxExample implements ActionListener
 		//show button
 		b = new JButton("Show");
 		b.setBounds(200,100,75,20);
+		b.addActionListener(this);
 		
 		//language combo box
 		String langs[] = {"C","C++","C#","HTML","Java","JavaScript","PHP"};
@@ -46,7 +47,7 @@ public class ComboBoxExample implements ActionListener
 		//show
 		if(e.getSource() == b)
 		{
-			String data = "Language Selected: " + cb.getItemAt(cb.getSelectedIndex());
+			String data = "Programming Language Selected: " + cb.getItemAt(cb.getSelectedIndex());
 			l.setText(data);
 		}
 	}
