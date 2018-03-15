@@ -14,25 +14,32 @@ public class ListExample extends JFrame implements ActionListener
 	
 	ListExample()
 	{
+		//jframe title
 		setTitle("List Example");
 		
+		//fill defaultListModels
 		fill();
 		
+		//label
 		l = new JLabel();
 		l.setSize(500,100);
 		
+		//button
 		b = new JButton("Show");
 		b.setBounds(200,150,80,30);
 		b.addActionListener(this);
 		
+		//lists bounds
 		l1.setBounds(100,100,75,75);
 		l2.setBounds(100,200,75,75);
 		
+		//add components
 		add(l);
 		add(l1);
 		add(l2);
 		add(b);
 		
+		//jframe layout
 		setSize(450,450);
 		setLayout(null);
 		setVisible(true);
@@ -56,6 +63,7 @@ public class ListExample extends JFrame implements ActionListener
 		l.setText(data);
 	}
 	
+	//fills lists
 	private void fill()
 	{
 		String l_1[] = {"C","C++","Java","PHP"};
