@@ -16,7 +16,6 @@ public class ComboBoxExample implements ActionListener
 		
 		//selection label
 		l = new JLabel();
-		//l.setBounds(50,50,165,20);
 		l.setHorizontalAlignment(JLabel.CENTER);
 		l.setSize(400,100);
 		
