@@ -3,6 +3,7 @@ package gui.apps;
 import javax.swing.*;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.*;
 
 public class Calculator extends JFrame
@@ -46,8 +47,7 @@ public class Calculator extends JFrame
 		
 		//display
 		display.setBounds(TOPX,TOPY,240*s,HEIGHT);
-		display.setBackground(Color.BLUE);
-		display.setForeground(Color.WHITE);
+		display.setFont(new Font(display.getName(), Font.PLAIN, HEIGHT));
 		add(display);
 		
 		memLab.setBounds(TOPX,TOPY+HEIGHT+V_SPACE,WIDTH,HEIGHT);
@@ -89,12 +89,17 @@ public class Calculator extends JFrame
 		}
 		
 		//operator buttons
-		int optX;
-		int optY;
+		int optX = digX + 2*(WIDTH + H_SPACE) + H_SPACE;
+		int optY = digY;
 		
+		tempX = optX;
+		y = optY;
 		for(int i = 0; i < operatorB.length; i++)
 		{
-			
+			tempX += WIDTH + H_SPACE;
+			operatorB[i] = new OperatorButton(tempX,y,WIDTH,HEIGHT,oBText[i],this);
+			operatorB[i].setForeground(Color.RED);
+			if((i+1)%2==0) { tempX = optX; y += HEIGHT + V_SPACE; }
 		}
 		
 		
