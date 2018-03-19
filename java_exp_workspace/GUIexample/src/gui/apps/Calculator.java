@@ -19,7 +19,7 @@ public class Calculator extends JFrame
 	char op;
 	
 	//button text strings
-	String dBText[] = {"7","8","9","4","5","6","1","2","3","0","+/-","."};
+	String dBText[] = {"7","8","9","4","5","6","1","2","3","+/-","0","."};
 	String oBText[] = {"/","sqrt","*","%","-","1/X","+","="};
 	String mBText[] = {"MC","MR","MS","M+"};
 	String sBText[] = {"BKSP","C","CE"};
@@ -51,6 +51,7 @@ public class Calculator extends JFrame
 		add(display);
 		
 		memLab.setBounds(TOPX,TOPY+HEIGHT+V_SPACE,WIDTH,HEIGHT);
+		memLab.setFont(new Font(memLab.getName(), Font.PLAIN, HEIGHT));
 		add(memLab);
 		
 		//memory buttons
@@ -180,7 +181,7 @@ class OperatorButton extends JButton implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		
+		String temp = ((OperatorButton)e.getSource()).getLabel();
 	}
 	
 }
@@ -203,8 +204,33 @@ class MemoryButton extends JButton implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
+		String temp = ((MemoryButton)e.getSource()).getLabel();
+		calc.clr = true;
 		
+		double n = Double.parseDouble(calc.display.getText());
 		
+		switch(temp)
+		{
+			case "MC":
+				calc.memLab.setText(" ");
+				break;
+			case "MR":
+				calc.display.setText(""+calc.memVal);
+				break;
+			case "MS":
+				calc.memVal = 0.0;
+			case "M+":
+				calc.memVal += Double.parseDouble(calc.display.getText());
+				if(calc.display.getText().equals("0") || calc.display.getText().equals("0.0"))
+				{
+					calc.memLab.setText(" ");
+				}
+				else
+				{
+					calc.memLab.setText("M");
+				}
+				break;
+		}
 	}
 	
 }
@@ -227,8 +253,29 @@ class SpecialButton extends JButton implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
+		String temp = ((SpecialButton)e.getSource()).getLabel();
 		
+		//backspace button
+		if(temp.equals("BKSP"))
+		{
+			String del = calc.display.getText().substring(0, calc.display.getText().length()-1);
+			if(del.equals("")) calc.display.setText("0");
+			else calc.display.setText(del);
+			return;
+		}
 		
+		//clear button
+		if(temp.equals("C"))
+		{
+			calc.num = 0.0;
+			calc.op = ' ';
+			calc.memVal = 0.0;
+			calc.memLab.setText("");
+		}
+		
+		//CE button
+		calc.display.setText("0");
+		calc.clr = true;
 	}
 	
 }
