@@ -121,6 +121,8 @@ class DigitButton extends JButton implements ActionListener
 	DigitButton(int x, int y, int width, int height, String bText, Calculator c)
 	{
 		super(bText);
+		if(bText.length() > 1) setFont(new Font(this.getName(), Font.PLAIN, height/4));
+		else setFont(new Font(this.getName(), Font.PLAIN, height/2));
 		setBounds(x,y,width,height);
 		calc = c;
 		calc.add(this);
@@ -167,6 +169,8 @@ class OperatorButton extends JButton implements ActionListener
 	OperatorButton(int x, int y, int width, int height, String bText, Calculator c)
 	{
 		super(bText);
+		if(bText.length() > 1 || bText.equals("%")) setFont(new Font(this.getName(), Font.PLAIN, height/4));
+		else setFont(new Font(this.getName(), Font.PLAIN, height/2));
 		setBounds(x,y,width,height);
 		calc = c;
 		calc.add(this);
@@ -190,6 +194,7 @@ class MemoryButton extends JButton implements ActionListener
 	{
 		super(bText);
 		setBounds(x,y,width,height);
+		setFont(new Font(this.getName(), Font.PLAIN, height/4));
 		calc = c;
 		calc.add(this);
 		addActionListener(this);
@@ -213,6 +218,7 @@ class SpecialButton extends JButton implements ActionListener
 	{
 		super(bText);
 		setBounds(x,y,width,height);
+		setFont(new Font(this.getName(), Font.PLAIN, height/2));
 		calc = c;
 		calc.add(this);
 		addActionListener(this);
