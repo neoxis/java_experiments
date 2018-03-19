@@ -19,8 +19,8 @@ public class Calculator extends JFrame
 	char op;
 	
 	//button text strings
-	String dBText[] = {"7","8","9","4","5","6","1","2","3","+/-","0","."};
-	String oBText[] = {"/","sqrt","*","%","-","1/X","+","="};
+	String dBText[] = {"7","8","9","4","5","6","1","2","3","\u00B1","0","\uff65"};
+	String oBText[] = {"\u00F7","\u221A","\u00D7","%","\u2212","1/X","+","="};
 	String mBText[] = {"MC","MR","MS","M+"};
 	String sBText[] = {"BKSP","C","CE"};
 	
@@ -135,7 +135,7 @@ class DigitButton extends JButton implements ActionListener
 	{
 		String temp = ((DigitButton)e.getSource()).getLabel();
 		
-		if(temp.equals("."))
+		if(temp.equals("\uff65"))
 		{
 			if(calc.clr)
 			{
